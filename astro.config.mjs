@@ -8,6 +8,8 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://juanjaragavi.github.io',
+  base: '/juanjaramillo',
   integrations: [tailwind(), react()],
   server: {
     watch: {
