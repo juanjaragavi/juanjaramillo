@@ -1,0 +1,66 @@
+---
+import CallToAction from './CallToAction.astro';
+import Icon from './Icon.astro';
+---
+
+<aside class="backgrounds z-50 mb:mt-200">
+	<h2 class="mb-3 font-Montserrat">Interested in my Job?</h2>
+	<CallToAction href="https://wa.link/vxko7w">
+		LET'S TALK!
+		<Icon icon="paper-plane-tilt" size="1.2em" />
+	</CallToAction>
+</aside>
+
+<style>
+	aside {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		/* gap: 3rem; */
+		border-bottom: 1px solid var(--gray-800);
+		padding: 5rem 1.5rem;
+		box-shadow: var(--shadow-sm);
+	}
+
+	h2 {
+		font-size: var(--text-xl);
+		text-align: center;
+		max-width: 20ch;
+		color: var(--gray-0);
+	}
+
+	@media (min-width: 50em) {
+
+	.backgrounds {
+		min-height: 100%;
+		isolation: isolate;
+		background:
+			/*noise*/ url('/assets/backgrounds/noise.png') top center/220px repeat,
+			/*footer*/ var(--bg-image-footer) bottom center/var(--bg-gradient-size) no-repeat,
+			/*header1*/ var(--bg-image-main-curves) top center/var(--bg-gradient-size) no-repeat,
+			/*header2*/ var(--bg-image-main) top center/var(--bg-gradient-size) no-repeat,
+			/*base*/ var(--gray-999);
+		background-blend-mode: /*noise*/ overlay, /*footer*/ var(--bg-blend-mode),
+			/*header1*/ var(--bg-svg-blend-mode), /*header2*/ normal, /*base*/ normal;
+	}
+	@media (forced-colors: active) {
+		/* Deactivate custom backgrounds for high contrast users. */
+		.backgrounds {
+			background: none;
+			background-blend-mode: none;
+			--bg-gradient-size: none;
+		}
+	}
+		aside {
+			padding: 3rem;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: space-between;
+		}
+
+		h2 {
+			font-size: var(--text-3xl);
+			text-align: left;
+		}
+	}
+</style>

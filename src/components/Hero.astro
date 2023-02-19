@@ -1,0 +1,81 @@
+---
+interface Props {
+	title?: string;
+	tagline?: string;
+	align?: 'start' | 'center';
+}
+
+const { align = 'center', tagline, title} = Astro.props;
+---
+
+<header class="mb:text-4xl mb:text-center contenedorTitulo" class:list={['hero stack gap-4', align]}>
+	<div class="stack lg:gap-2 mb:-mt-100">
+		<h2 class="lg:text-5xl text-4xl font-Montserrat font-bold mb:-pb-10">{title}</h2>
+		{tagline && <p class="tagline font-Montserrat font-light mb:text-sm">{tagline}</p>}
+	</div>
+	<slot />
+</header>
+
+<style>
+	.hero {
+		font-size: var(--text-lg);
+		text-align: center;
+	}
+
+	.title,
+	.tagline {
+		margin-top: 0.5em;
+		min-width: 35ch;
+		/* font-size: var(--text-lg); */
+		max-width: 81ch;
+		/*margin-inline: auto;*/
+	}
+
+	.title {
+		font-size: var(--text-2xl);
+		color: var(--gray-0);
+	}
+	.mobile-title {
+		font-size: var(--text-2xl);
+	}
+	.titleH2 {
+		font-size: var(--text-4xl);
+		color: var(--gray-0);
+	}
+
+	.morado {
+		color: var(--accent-regular);
+	}
+
+	@media (min-width: 50em) {
+		.titleH2 {
+			width: 40em;
+		}
+		.title,
+		.tagline {
+			width: 35em;
+			font-size: var(--text-lg);
+			margin-inline: auto;
+		}
+		.hero {
+			margin-top: 1em;
+			font-size: var(--text-xl);
+		}
+		.contenedorTitulo {
+			width: 40em;
+		}
+
+		.start {
+			text-align: start;
+		}
+
+		.start .title,
+		.start .tagline {
+			margin-inline: unset;
+		}
+
+		.title {
+			font-size: var(--text-5xl);
+		}
+	}
+</style>

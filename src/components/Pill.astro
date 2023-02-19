@@ -1,0 +1,29 @@
+---
+import Icon from '../components/Icon.astro';
+
+interface Props{
+	link?: string | undefined;
+	icon?: string | undefined;
+}
+
+const {link} = Astro.props
+const {icon} = Astro.props
+---
+
+<a href={link}><div class="pill mb:my-2 hover:bg-white hover:text-color hover:cursor-pointer shadow-md hover:text-primary hover:scale-105 transition-all duration-300 ease-linear flex scroll-smooth hover:scroll-auto text-white"><Icon icon={icon} size="1.33em" /><slot /></div></a>
+
+<style>
+	.pill {
+		display: flex;
+		padding: 0.5rem 1.5rem;
+		gap: 0.4rem;
+		color: var(--accent-text-over);
+		border: 1px solid var(--accent-regular);
+		background-color: var(--accent-regular);
+		border-radius: 999rem;
+		font-size: var(--text-sm );
+		line-height: 1.35;
+		white-space: nowrap;
+		font-weight: 500;
+	}
+</style>
