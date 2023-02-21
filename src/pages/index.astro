@@ -1,112 +1,118 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 // Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 // Component Imports
-import CallToAction from '../components/CallToAction.astro';
-import Grid from '../components/Grid.astro';
-import HeroDegradado from '../components/HeroDegradado.astro';
-import Icon from '../components/Icon.astro';
-import Pill from '../components/Pill.astro';
-import PortfolioPreview from '../components/PortfolioPreview.astro';
+import CallToAction from "../components/CallToAction.astro";
+import Grid from "../components/Grid.astro";
+import HeroDegradado from "../components/HeroDegradado.astro";
+import Icon from "../components/Icon.astro";
+import Pill from "../components/Pill.astro";
+import PortfolioPreview from "../components/PortfolioPreview.astro";
 
 // Page section components
-import ContactCTA from '../components/ContactCTA.astro';
-import Skills from '../components/Skills.astro';
-// Content Fetching: List four most recent work projects	
+import ContactCTA from "../components/ContactCTA.astro";
+import Skills from "../components/Skills.astro";
+// Content Fetching: List four most recent work projects
 
-const projects = (await getCollection('work'))
-	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
-	.slice(0, 4);	
-	
-function handleScroll() {
-	const scrollPosition = window.scrollY;
-	const element = document.getElementsByClassName('hero');
-	if (scrollPosition > 100) {
-		element.style.opacity = '1';
-	} else {
-		element.style.opacity = '0';
-	}
-}	
-	
+const projects = (await getCollection("work"))
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+  .slice(0, 4);
 ---
 
 <!-- HEADER Y NAV (Nav.astro) -->
-
 <BaseLayout>
-	<div class="stack gap-20 lg:gap-48">
-		<div class="wrapper stack mb:gap-50 sticky top-20">
+  <div class="stack gap-20 lg:gap-48">
+    <div
+      class="hide-on-scroll transition-all duration-300 ease-linear wrapper stack mb:gap-50 sticky top-20"
+    >
+      <!-- SALUDO, DESCRIPCIÓN, PILLS DE SKILLS Y FOTO PRINCIPAL -->
+      <header class="hero">
+        <HeroDegradado
+          title="Hello, I am"
+          title2="Juan Jaramillo"
+          tagline="Frontend & Backend Developer, Multimedia Maker & Producer and Marketing Specialist that has worked for or cofounded several Companies and Startups around the World."
+          align="start"
+        >
+          <div class="h-5 mb:h-0"></div>
+          <div class="roles font-Montserrat">
+            <Pill link={"#why-me"} icon={"code"}>
+              <span class="pl-1.5">Development</span>
+            </Pill>
+            <Pill link={"#why-me"} icon={"pencil-line"}>
+              <span class="pl-1.5">Creativity</span>
+            </Pill>
+            <Pill link={"#why-me"} icon={"rocket-launch"}>
+              <span class="pl-1.5">Digital Marketing</span>
+            </Pill>
+            <Pill link={"#why-me"} icon={"paper-plane-tilt"}>
+              <span class="pl-1.5">Strategy</span>
+            </Pill>
+          </div>
+        </HeroDegradado>
 
-			<!-- SALUDO, DESCRIPCIÓN, PILLS DE SKILLS Y FOTO PRINCIPAL -->
-			<header class="hero">
-					<HeroDegradado
-						title="Hello, I am"
-						title2="Juan Jaramillo"
-						tagline="Frontend & Backend Developer, Multimedia Maker & Producer and Marketing Specialist that has worked for or cofounded several Companies and Startups around the World."
-						align="start"
-					>
-					<div class="h-5 mb:h-0"></div>
-					<div class="roles font-Montserrat">
-						<Pill link={"#why-me"} icon={"code"}><span class="pl-1.5">Development</span></Pill>
-						<Pill link={"#why-me"} icon={"pencil-line"}><span class="pl-1.5">Creativity</span></Pill>
-						<Pill link={"#why-me"} icon={"rocket-launch"}><span class="pl-1.5">Digital Marketing</span></Pill>
-						<Pill link={"#why-me"} icon={"paper-plane-tilt"}><span class="pl-1.5">Strategy</span></Pill>
-					</div>
-				</HeroDegradado>
+        <!-- FOTO PRINCIPAL -->
 
-				<!-- FOTO PRINCIPAL -->
+        <img
+          class="transition-all duration-500 ease-linear hover:brightness-150 hover:scale-105"
+          src="/assets/juan-jaramillo-cv-digital.png"
+          loading="lazy"
+          decoding="async"
+        />
+      </header>
+    </div>
 
-				<img
-					class="transition-all duration-500 ease-linear hover:brightness-150 hover:scale-105"
-					src="/assets/juan-jaramillo-cv-digital.png"
-					loading="lazy"
-					decoding="async"
-				/>
-			</header>
-		</div>
+    <!-- SECCIÓN "¿POR QUÉ SOY EL INDICADO PARA EL TRABAJO?" -->
 
-		<!-- SECCIÓN "¿POR QUÉ SOY EL INDICADO PARA EL TRABAJO?" -->
+    <main class="wrapper stack gap-40 z-10 backgrounds">
+      <header class="stack xl:pt-30 pt-20" id="why-me">
+        <h3
+          class="text-lg leading-none text-center mb:text-center content-center justify-center font-Montserrat title"
+        >
+          Why I am the <span class="degradadoTextoDestacado">right one</span>
+          <span class="font-Montserrat title">for the job?</span>
+        </h3>
+      </header>
 
-		<main class="wrapper stack gap-40 z-10 backgrounds">
-			<header class="stack xl:pt-30 pt-20" id="why-me">
-				<h3 class="text-lg leading-none text-center mb:text-center content-center justify-center font-Montserrat title">Why I am the <span class="degradadoTextoDestacado">right one</span> <span class="font-Montserrat title">for the job?</span></h3>
-			</header>
-			
-			<Skills/>
-			
+      <Skills />
 
-		<!-- SECCIÓN "MI TRABAJO" -->
-			
-			<section class="section with-cta">
-				<header class="section-header stack gap-2 lg:gap-4">
-					<h2 class="anchoDesktop font-Montserrat title">Get to know <span class="degradadoTextoDestacado">my job</span></h2>
-					<p class="font-Montserrat font-light" style="color: var(--gray-0);">I am ready to turn your Digital Marketing Strategy, Multimedia Production or Software Development Project into Reality.</p>
-				</header>
+      <!-- SECCIÓN "MI TRABAJO" -->
 
-				<div class="gallery ">
-					<Grid variant="offset">
-						{
-							projects.map((project) => (
-								<li>
-									<PortfolioPreview project={project} />
-								</li>
-							))
-						}
-					</Grid>
-				</div>
+      <section class="section with-cta">
+        <header class="section-header stack gap-2 lg:gap-4">
+          <h2 class="anchoDesktop font-Montserrat title">
+            Get to know <span class="degradadoTextoDestacado">my job</span>
+          </h2>
+          <p class="font-Montserrat font-light" style="color: var(--gray-0);">
+            I am ready to turn your Digital Marketing Strategy, Multimedia
+            Production or Software Development Project into Reality.
+          </p>
+        </header>
 
-				<div class="cta mr-2 mt-10 mb:mt-0">
-					<CallToAction href="/work/">
-						View All
-						<Icon icon="arrow-right" size="1.2em" />
-					</CallToAction>
-				</div>
-			</section>
+        <div class="gallery">
+          <Grid variant="offset">
+            {
+              projects.map((project) => (
+                <li>
+                  <PortfolioPreview project={project} />
+                </li>
+              ))
+            }
+          </Grid>
+        </div>
 
-			<!-- SECCIÓN "EXPERIENCIA EDUCATIVA" -->
+        <div class="cta mr-2 mt-10 mb:mt-0">
+          <CallToAction href="/work/">
+            View All
+            <Icon icon="arrow-right" size="1.2em" />
+          </CallToAction>
+        </div>
+      </section>
 
-			<!-- <section class="section mb:-mt-20 mb:mb-10">
+      <!-- SECCIÓN "EXPERIENCIA EDUCATIVA" -->
+
+      <!-- <section class="section mb:-mt-20 mb:mb-10">
 				<header class="section-header stack lg:gap-4">
 					<h3 class="font-Montserrat texto-blanco">Education & Training</h3>
 					<p class="mb-5 font-Montserrat texto-blanco">
@@ -115,195 +121,202 @@ function handleScroll() {
 					</p>
 				</header>
 			</section> -->
-		</main>
-		<section class="w-96 h-3"></section>
-		<ContactCTA />
-	</div>
+    </main>
+    <section class="w-96 h-3"></section>
+    <ContactCTA />
+  </div>
 </BaseLayout>
 
 <style>
-	.backgrounds {
-		min-height: 100%;
-		isolation: isolate;
-		background:
-			/*noise*/ url('/assets/backgrounds/noise.png') top center/220px repeat,
-			/*footer*/ var(--bg-image-footer) bottom center/var(--bg-gradient-size) no-repeat,
-			/*header1*/ var(--bg-image-main-curves) top center/var(--bg-gradient-size) no-repeat,
-			/*header2*/ var(--bg-image-main) top center/var(--bg-gradient-size) no-repeat,
-			/*base*/ var(--gray-999);
-		background-blend-mode: /*noise*/ overlay, /*footer*/ var(--bg-blend-mode),
-			/*header1*/ var(--bg-svg-blend-mode), /*header2*/ normal, /*base*/ normal;
-	}
-	@media (forced-colors: active) {
-		/* Deactivate custom backgrounds for high contrast users. */
-		.backgrounds {
-			background: none;
-			background-blend-mode: none;
-			--bg-gradient-size: none;
-		}
-	}
-	.title,
-	.tagline {
-		max-width: 37ch;
-		margin-inline: auto;
-	}
+  .backgrounds {
+    min-height: 100%;
+    isolation: isolate;
+    background:
+			/*noise*/ url("/assets/backgrounds/noise.png") top center/220px
+        repeat,
+      /*footer*/ var(--bg-image-footer) bottom center/var(--bg-gradient-size)
+        no-repeat,
+      /*header1*/ var(--bg-image-main-curves) top center/var(--bg-gradient-size)
+        no-repeat,
+      /*header2*/ var(--bg-image-main) top center/var(--bg-gradient-size)
+        no-repeat,
+      /*base*/ var(--gray-999);
+    background-blend-mode: /*noise*/ overlay, /*footer*/ var(--bg-blend-mode),
+      /*header1*/ var(--bg-svg-blend-mode), /*header2*/ normal, /*base*/ normal;
+  }
+  @media (forced-colors: active) {
+    /* Deactivate custom backgrounds for high contrast users. */
+    .backgrounds {
+      background: none;
+      background-blend-mode: none;
+      --bg-gradient-size: none;
+    }
+  }
+  .title,
+  .tagline {
+    max-width: 37ch;
+    margin-inline: auto;
+  }
 
-	.title {
-		margin-top: 1em;
-		font-size: var(--text-3xl);
-		color: var(--gray-0);
-	}
-	.texto-blanco {
-		color: var(--gray-0);
-	}
+  .title {
+    margin-top: 1em;
+    font-size: var(--text-3xl);
+    color: var(--gray-0);
+  }
+  .texto-blanco {
+    color: var(--gray-0);
+  }
 
-	.hero {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 2rem;
-	}
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
 
-	.roles {
-		display: block;
-		width: 60%;
-		margin: 20px auto;
-	}
+  .roles {
+    display: block;
+    width: 60%;
+    margin: 20px auto;
+  }
 
-	.hero img {
-		aspect-ratio: 1 / 1;
-		object-fit: cover;
-		object-position: top;
-	}
-	.hero-image-xl { min-width: 42ch; }
+  .hero img {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: top;
+  }
+  .hero-image-xl {
+    min-width: 42ch;
+  }
 
-	@media (min-width: 50em) {
-		.anchoDesktop {
-			width: 25ch; 
-		}
-		.hero {
-			display: grid;
-			grid-template-columns: 6fr 4fr;
-			padding-inline: 2.5rem;
-			gap: 3.75rem;
-		}
+  @media (min-width: 50em) {
+    .anchoDesktop {
+      width: 25ch;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 6fr 4fr;
+      padding-inline: 2.5rem;
+      gap: 3.75rem;
+    }
 
-		.roles {
-			margin-top: 0.5rem;
-			display: flex;
-			gap: 0.5rem;
-		}
-		.rol {
-			width: 10%;
-		}
+    .roles {
+      margin-top: 0.5rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+    .rol {
+      width: 10%;
+    }
 
-		.hero img {
-			aspect-ratio: 2.2 / 4;
-			object-fit: cover;
-		}
-	}
+    .hero img {
+      aspect-ratio: 2.2 / 4;
+      object-fit: cover;
+    }
+  }
 
-	/* ====================================================== */
+  /* ====================================================== */
 
-	.section {
-		display: grid;
-		gap: 2rem;
-	}
+  .section {
+    display: grid;
+    gap: 2rem;
+  }
 
-	.with-background {
-		position: relative;
-	}
+  .with-background {
+    position: relative;
+  }
 
-	.with-background::before {
-		--hero-bg: var(--bg-image-subtle-2);
+  .with-background::before {
+    --hero-bg: var(--bg-image-subtle-2);
 
-		content: '';
-		position: absolute;
-		pointer-events: none;
-		left: 50%;
-		width: 100vw;
-		aspect-ratio: calc(2.25 / var(--bg-scale));
-		top: 0;
-		transform: translateY(-75%) translateX(-50%);
-		background: url('/assets/backgrounds/noise.png') top center/220px repeat,
-			var(--hero-bg) center center / var(--bg-gradient-size) no-repeat, var(--gray-999);
-		background-blend-mode: overlay, normal, normal, normal;
-		mix-blend-mode: var(--bg-blend-mode);
-		z-index: -1;
-	}
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    left: 50%;
+    width: 100vw;
+    aspect-ratio: calc(2.25 / var(--bg-scale));
+    top: 0;
+    transform: translateY(-75%) translateX(-50%);
+    background: url("/assets/backgrounds/noise.png") top center/220px repeat,
+      var(--hero-bg) center center / var(--bg-gradient-size) no-repeat,
+      var(--gray-999);
+    background-blend-mode: overlay, normal, normal, normal;
+    mix-blend-mode: var(--bg-blend-mode);
+    z-index: -1;
+  }
 
-	.with-background.bg-variant::before {
-		--hero-bg: var(--bg-image-subtle-1);
-	}
+  .with-background.bg-variant::before {
+    --hero-bg: var(--bg-image-subtle-1);
+  }
 
-	.section-header {
-		justify-self: center;
-		text-align: center;
-		max-width: 100ch;
-		font-size: var(--text-md);
-		color: var(--gray-300);
-	}
+  .section-header {
+    justify-self: center;
+    text-align: center;
+    max-width: 100ch;
+    font-size: var(--text-md);
+    color: var(--gray-300);
+  }
 
-	.section-header h3 {
-		font-size: var(--text-2xl);
-	}
+  .section-header h3 {
+    font-size: var(--text-2xl);
+  }
 
-	@media (min-width: 50em) {
-		.roles {
-			width: auto;
-		}
-		.section {
-			grid-template-columns: repeat(4, 1fr);
-			grid-template-areas: 'header header header header' 'gallery gallery gallery gallery';
-			gap: 5rem;
-		}
+  @media (min-width: 50em) {
+    .roles {
+      width: auto;
+    }
+    .section {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-areas: "header header header header" "gallery gallery gallery gallery";
+      gap: 5rem;
+    }
 
-		.section.with-cta {
-			grid-template-areas: 'header header header cta' 'gallery gallery gallery gallery';
-		}
+    .section.with-cta {
+      grid-template-areas: "header header header cta" "gallery gallery gallery gallery";
+    }
 
-		.section-header {
-			grid-area: header;
-			font-size: var(--text-lg);
-		}
+    .section-header {
+      grid-area: header;
+      font-size: var(--text-lg);
+    }
 
-		.section-header h3 {
-			font-size: var(--text-4xl);
-		}
+    .section-header h3 {
+      font-size: var(--text-4xl);
+    }
 
-		.with-cta .section-header {
-			justify-self: flex-start;
-			text-align: left;
-		}
+    .with-cta .section-header {
+      justify-self: flex-start;
+      text-align: left;
+    }
 
-		.gallery {
-			grid-area: gallery;
-		}
+    .gallery {
+      grid-area: gallery;
+    }
 
-		.cta {
-			grid-area: cta;
-		}
-	}
+    .cta {
+      grid-area: cta;
+    }
+  }
 
-	/* ====================================================== */
+  /* ====================================================== */
 
-	.mention-card {
-		display: flex;
-		height: 7rem;
-		justify-content: center;
-		align-items: center;
-		text-align: center;
-		border: 1px solid var(--gray-800);
-		border-radius: 1.5rem;
-		color: var(--gray-300);
-		background: var(--gradient-subtle);
-		box-shadow: var(--shadow-sm);
-	}
+  .mention-card {
+    display: flex;
+    height: 7rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid var(--gray-800);
+    border-radius: 1.5rem;
+    color: var(--gray-300);
+    background: var(--gradient-subtle);
+    box-shadow: var(--shadow-sm);
+  }
 
-	@media (min-width: 50em) {
-		.mention-card {
-			border-radius: 1.5rem;
-			height: 9.5rem;
-		}
-	}
+  @media (min-width: 50em) {
+    .mention-card {
+      border-radius: 1.5rem;
+      height: 9.5rem;
+    }
+  }
 </style>

@@ -13,7 +13,16 @@
 		@apply bg-slate-900 border-lime-300
 	}
 	.degradadoTextoDestacado {
-		@apply bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500 hover:bg-gradient-to-r hover:from-violet-500 hover:to-pink-500 focus:cursor-pointer transition-all ease-linear
+		@apply bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500 hover:bg-gradient-to-r hover:from-violet-500 hover:to-pink-500 focus:cursor-pointer transition-all ease-linear duration-500
+	}
+	.hide-on-scroll {
+		@apply opacity-100
+	}
+	.scroll-down .hide-on-scroll {
+		@apply opacity-100
+	}
+	.scroll-down .hide-on-scroll {
+		@apply opacity-0
 	}
   }
 
