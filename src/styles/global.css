@@ -18,12 +18,6 @@
 	.hide-on-scroll {
 		@apply opacity-100
 	}
-	.scroll-down .hide-on-scroll {
-		@apply opacity-100
-	}
-	.scroll-down .hide-on-scroll {
-		@apply opacity-0
-	}
   }
 
 :root {
