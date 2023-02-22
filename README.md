@@ -6,7 +6,7 @@ I am a Frontend & Backend Developer who is currently based in Bogotá, Colombia.
 
 Tech Startup Co-Founder • UX & UI Design Lead • Backend & Frontend Developer • Web & App Developer • Specialist in Digital Marketing • 16 Years of Experience in Digital & Tech.
 
-![my-cv](https://user-images.githubusercontent.com/357379/210779178-a98f0fb7-6b1a-4068-894c-8e1403e26654.jpg)
+![my-cv](https://lh3.googleusercontent.com/u/0/drive-viewer/AAOQEOSXa2AIJHuEA78Ld65dY2gumCFZrHU3YjgIYjwwliA8sxUj7GbPkOw0uTha64eiP5KPa2hZ8YI1o84C_MgBYQ1sbgkIHA=w4016-h2094)
 
 ## 👀 Want to learn more?
 
