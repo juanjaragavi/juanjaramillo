@@ -11,3 +11,4 @@ Tech Startup Co-Founder • UX & UI Design Lead • Backend & Frontend Developer
 ## 👀 Want to learn more?
 
 Feel free to check [LinkedIn Profile](https://www.linkedin.com/in/juan-jaramillo-tradebog/) or add me to [WhatsApp](https://wa.link/anay7y), so we can have a Chat.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/04a19a9d-5500-49b1-b5b4-2b4c8e9ec3e3/deploy-status)](https://app.netlify.com/sites/juanjaramillo/deploys)
